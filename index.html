@@ -858,11 +858,12 @@
     </div>
     <div class="projects-grid">
       <div class="project-card reveal">
-        <div class="project-thumb">🏠<span class="project-status">Planned</span></div>
+        <div class="project-thumb">🏠<span class="project-status completed">Completed</span></div>
         <div class="project-body">
           <h3>Home Lab SOC Environment</h3>
-          <p>Self-hosted lab simulating an enterprise network with a SIEM (Wazuh/Splunk), a few vulnerable VMs, and basic attack simulations to practice detection and triage.</p>
-          <div class="project-tags"><span>VirtualBox</span><span>Wazuh / Splunk</span><span>Linux</span></div>
+          <p>Deployed Wazuh SIEM 4.14.5 on VirtualBox and connected a Windows 11 endpoint as a monitored agent. Detected CVE-2025-55130 (CVSS 9.1 Critical) in Node.js, identified MITRE ATT&CK T1562.001 Defense Evasion technique with 489 events, and found 351 failed CIS Windows 11 security benchmark checks. Documented findings in a professional SOC analyst write-up.</p>
+          <div class="project-tags"><span>Wazuh</span><span>SIEM</span><span>CVE Analysis</span><span>MITRE ATT&CK</span><span>Windows Security</span></div>
+          <a href="https://github.com/CS-Abuhelal/siem-homelab" class="project-link" target="_blank" rel="noopener">View on GitHub →</a>
         </div>
       </div>
       <div class="project-card reveal">
