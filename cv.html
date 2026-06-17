@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ahmed Helal — CV</title>
+<style>
+  :root {
+    --text: #1a2330;
+    --text-dim: #5b6b7d;
+    --accent: #0f766e;
+    --border: #dbe3ec;
+    --bg: #f3f5f9;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    font-family: 'Segoe UI', Calibri, Arial, sans-serif;
+    color: var(--text);
+    padding: 32px 16px;
+  }
+
+  .toolbar {
+    max-width: 800px;
+    margin: 0 auto 16px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .toolbar button {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+
+  .toolbar button:hover { opacity: 0.9; }
+
+  .page {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 48px 56px;
+    box-shadow: 0 10px 40px rgba(20,30,50,0.08);
+    border: 1px solid var(--border);
+  }
+
+  header.cv-header {
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+  }
+
+  header.cv-header h1 {
+    font-size: 1.9rem;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+  }
+
+  header.cv-header .role {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 1rem;
+    margin-top: 2px;
+  }
+
+  .contact-line {
+    margin-top: 10px;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .contact-line a { color: var(--text-dim); text-decoration: none; }
+  .contact-line span.sep { color: var(--border); }
+
+  section.cv-section { margin-bottom: 22px; }
+
+  section.cv-section h2 {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 10px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .summary p {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: var(--text);
+  }
+
+  .entry { margin-bottom: 14px; }
+  .entry:last-child { margin-bottom: 0; }
+
+  .entry-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .entry-top .title { font-weight: 700; font-size: 0.95rem; }
+  .entry-top .date { font-size: 0.82rem; color: var(--text-dim); font-style: italic; }
+
+  .entry .org {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+  }
+
+  .entry ul {
+    margin-left: 18px;
+    font-size: 0.88rem;
+    color: var(--text);
+    line-height: 1.55;
+  }
+
+  .skills-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .skill-line {
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+
+  .skill-line strong { color: var(--text); }
+  .skill-line span.items { color: var(--text-dim); }
+
+  .lang-row {
+    display: flex;
+    gap: 28px;
+    font-size: 0.88rem;
+  }
+
+  .lang-row strong { color: var(--text); }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .toolbar { display: none; }
+    .page { box-shadow: none; border: none; padding: 0.4in; max-width: 100%; }
+    @page { size: Letter; margin: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <button onclick="window.print()">Print / Save as PDF</button>
+</div>
+
+<div class="page">
+  <header class="cv-header">
+    <h1>Ahmed Helal</h1>
+    <div class="role">Computer Science Student | Aspiring SOC Analyst</div>
+    <div class="contact-line">
+      <span>Jeddah, Saudi Arabia</span>
+      <span class="sep">|</span>
+      <a href="mailto:abuh3lal@gmail.com">abuh3lal@gmail.com</a>
+      <span class="sep">|</span>
+      <a href="https://linkedin.com/in/ahmed-helal-3b6b65406" target="_blank" rel="noopener">linkedin.com/in/ahmed-helal-3b6b65406</a>
+      <span class="sep">|</span>
+      <a href="https://github.com/CS-Abuhelal" target="_blank" rel="noopener">github.com/CS-Abuhelal</a>
+    </div>
+  </header>
+
+  <section class="cv-section summary">
+    <h2>Summary</h2>
+    <p>Computer Science student at the University of Jeddah, pursuing a career as a Security Operations Center (SOC) Analyst. Building practical knowledge of network monitoring, SIEM concepts, and incident response through coursework and self-directed study, with a strong personal interest in applying machine learning to threat detection. Reliable and detail-oriented, with part-time work experience in a data-accuracy role. Seeking an entry-level SOC or cybersecurity internship.</p>
+  </section>
+
+  <section class="cv-section">
+    <h2>Education</h2>
+    <div class="entry">
+      <div class="entry-top">
+        <span class="title">Bachelor of Science in Computer Science</span>
+        <span class="date">Expected June 2027</span>
+      </div>
+      <div class="org">University of Jeddah — Jeddah, Saudi Arabia</div>
+    </div>
+  </section>
+
+  <section class="cv-section">
+    <h2>Relevant Coursework</h2>
+    <div class="skills-list">
+      <div class="skill-line"><span class="items">Cybersecurity Fundamentals, Advanced Networking, Cloud Computing, AI Fundamentals, Data Warehousing, Data Structures, Algorithms Design & Analysis, Operating Systems, Computer Architecture</span></div>
+    </div>
+  </section>
+
+  <section class="cv-section">
+    <h2>Experience</h2>
+    <div class="entry">
+      <div class="entry-top">
+        <span class="title">Data Entry Clerk (Part-time)</span>
+        <span class="date">October 2022 — Present</span>
+      </div>
+      <div class="org">Bedour Ali Mohammed Al-Amoudi Est. — Jeddah, Saudi Arabia</div>
+      <ul>
+        <li>Entered and maintained large volumes of data accurately under time constraints.</li>
+        <li>Reviewed records to identify and correct discrepancies, supporting data integrity.</li>
+        <li>Followed structured processes carefully — a habit directly transferable to log review and alert triage.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="cv-section">
+    <h2>Certifications</h2>
+    <div class="skills-list">
+      <div class="skill-line"><span class="items">CompTIA Security+ — In Progress (self-study)</span></div>
+    </div>
+  </section>
+
+  <section class="cv-section">
+    <h2>Technical Skills</h2>
+    <div class="skills-list">
+      <div class="skill-line"><strong>Cybersecurity:</strong> <span class="items">SIEM concepts, incident response basics, threat hunting fundamentals, MITRE ATT&CK framework (covered in Cybersecurity Fundamentals coursework)</span></div>
+      <div class="skill-line"><strong>Networking:</strong> <span class="items">TCP/IP, firewalls, Wireshark, DNS/DHCP, IDS/IPS basics (Advanced Networking coursework)</span></div>
+      <div class="skill-line"><strong>AI / Machine Learning:</strong> <span class="items">Python, fundamental ML and NLP concepts, data preprocessing (AI Fundamentals coursework)</span></div>
+      <div class="skill-line"><strong>Programming:</strong> <span class="items">Python, C/C++, SQL, Bash/PowerShell, Git</span></div>
+    </div>
+  </section>
+
+  <section class="cv-section">
+    <h2>Personal Skills</h2>
+    <div class="skills-list">
+      <div class="skill-line"><span class="items">Attention to detail, analytical thinking, problem-solving, time management, adaptability, clear communication, reliability under pressure, fast learner</span></div>
+    </div>
+  </section>
+
+  <section class="cv-section">
+    <h2>Languages</h2>
+    <div class="lang-row">
+      <span><strong>Arabic</strong> — Native</span>
+      <span><strong>English</strong> — Professional</span>
+    </div>
+  </section>
+</div>
+
+</body>
+</html>
