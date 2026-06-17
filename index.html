@@ -502,6 +502,24 @@
     font-weight: 600;
   }
 
+  .project-status.completed {
+    color: var(--accent-2);
+  }
+
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent-2);
+    text-decoration: none;
+  }
+
+  .project-link:hover {
+    text-decoration: underline;
+  }
+
   /* Contact */
   .contact-wrap {
     display: grid;
@@ -856,11 +874,12 @@
         </div>
       </div>
       <div class="project-card reveal">
-        <div class="project-thumb">🧪<span class="project-status">Planned</span></div>
+        <div class="project-thumb">🧪<span class="project-status completed">Completed</span></div>
         <div class="project-body">
           <h3>Phishing Email Classifier</h3>
-          <p>NLP model trained to flag phishing emails from headers and body text — my first applied-ML project tying directly into SOC work.</p>
-          <div class="project-tags"><span>Python</span><span>NLP</span><span>Scikit-learn</span></div>
+          <p>Python tool that parses raw emails (headers + body) and flags common phishing signs — spoofed sender domains, suspicious/disguised links, urgency language, and Reply-To mismatches — then outputs a 0-100 risk score with a readable summary report.</p>
+          <div class="project-tags"><span>Python</span><span>NLP</span><span>Email Security</span></div>
+          <a href="https://github.com/CS-Abuhelal/phishing-analyzer" class="project-link" target="_blank" rel="noopener">View on GitHub →</a>
         </div>
       </div>
       <div class="project-card reveal">
