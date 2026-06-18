@@ -885,11 +885,12 @@
         </div>
       </div>
       <div class="project-card reveal">
-        <div class="project-thumb">🔍<span class="project-status">Planned</span></div>
+        <div class="project-thumb">🔍<span class="project-status completed">Completed</span></div>
         <div class="project-body">
           <h3>Log Anomaly Detector</h3>
-          <p>Lightweight model that scans authentication/system logs to surface unusual patterns worth a SOC analyst's attention.</p>
-          <div class="project-tags"><span>Python</span><span>Pandas</span><span>ML</span></div>
+          <p>Python tool that parses Windows Security Event logs and Linux auth.log files into one normalized timeline, then uses pandas/numpy statistics (sliding windows, z-scores) to flag brute-force login bursts, unusual-hour logins, new account creation, privilege escalation, and suspicious process execution — each finding scored 0-100 for risk.</p>
+          <div class="project-tags"><span>Python</span><span>Pandas</span><span>Log Analysis</span><span>Anomaly Detection</span><span>Windows Security</span></div>
+          <a href="https://github.com/CS-Abuhelal/log-anomaly-detector" class="project-link" target="_blank" rel="noopener">View on GitHub →</a>
         </div>
       </div>
     </div>
