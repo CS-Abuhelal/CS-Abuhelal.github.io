@@ -6,10 +6,10 @@
 <title>Ahmed Helal — CV</title>
 <style>
   :root {
-    --text: #1a2330;
-    --text-dim: #5b6b7d;
-    --accent: #0f766e;
-    --border: #dbe3ec;
+    --text: #22272e;
+    --text-dim: #57606a;
+    --accent: #0f6660;
+    --border: #d8dee4;
     --bg: #f3f5f9;
   }
 
@@ -34,7 +34,7 @@
     color: #fff;
     border: none;
     padding: 10px 20px;
-    border-radius: 8px;
+    border-radius: 4px;
     font-weight: 600;
     font-size: 0.9rem;
     cursor: pointer;
@@ -47,26 +47,26 @@
     margin: 0 auto;
     background: #fff;
     padding: 48px 56px;
-    box-shadow: 0 10px 40px rgba(20,30,50,0.08);
+    box-shadow: 0 4px 20px rgba(20,30,50,0.08);
     border: 1px solid var(--border);
   }
 
   header.cv-header {
-    border-bottom: 2px solid var(--accent);
+    border-bottom: 2px solid var(--text);
     padding-bottom: 16px;
-    margin-bottom: 24px;
+    margin-bottom: 22px;
   }
 
   header.cv-header h1 {
-    font-size: 1.9rem;
-    font-weight: 800;
+    font-size: 1.8rem;
+    font-weight: 700;
     letter-spacing: 0.3px;
   }
 
   header.cv-header .role {
-    color: var(--accent);
+    color: var(--text-dim);
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 0.98rem;
     margin-top: 2px;
   }
 
@@ -82,13 +82,13 @@
   .contact-line a { color: var(--text-dim); text-decoration: none; }
   .contact-line span.sep { color: var(--border); }
 
-  section.cv-section { margin-bottom: 22px; }
+  section.cv-section { margin-bottom: 20px; }
 
   section.cv-section h2 {
-    font-size: 0.78rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
-    letter-spacing: 1.2px;
-    color: var(--accent);
+    letter-spacing: 1px;
+    color: var(--text);
     font-weight: 700;
     margin-bottom: 10px;
     padding-bottom: 4px;
@@ -98,10 +98,9 @@
   .summary p {
     font-size: 0.92rem;
     line-height: 1.6;
-    color: var(--text);
   }
 
-  .entry { margin-bottom: 14px; }
+  .entry { margin-bottom: 13px; }
   .entry:last-child { margin-bottom: 0; }
 
   .entry-top {
@@ -113,25 +112,26 @@
   }
 
   .entry-top .title { font-weight: 700; font-size: 0.95rem; }
-  .entry-top .date { font-size: 0.82rem; color: var(--text-dim); font-style: italic; }
+  .entry-top .date { font-size: 0.82rem; color: var(--text-dim); }
 
   .entry .org {
     font-size: 0.85rem;
     color: var(--text-dim);
-    margin-bottom: 6px;
+    margin-bottom: 5px;
   }
+
+  .entry .org a { color: var(--text-dim); }
 
   .entry ul {
     margin-left: 18px;
     font-size: 0.88rem;
-    color: var(--text);
     line-height: 1.55;
   }
 
   .skills-list {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 7px;
   }
 
   .skill-line {
@@ -139,7 +139,6 @@
     line-height: 1.6;
   }
 
-  .skill-line strong { color: var(--text); }
   .skill-line span.items { color: var(--text-dim); }
 
   .lang-row {
@@ -148,13 +147,20 @@
     font-size: 0.88rem;
   }
 
-  .lang-row strong { color: var(--text); }
-
   @media print {
+    html { font-size: 14px; }
     body { background: #fff; padding: 0; }
     .toolbar { display: none; }
-    .page { box-shadow: none; border: none; padding: 0.4in; max-width: 100%; }
-    @page { size: Letter; margin: 0; }
+    .page { box-shadow: none; border: none; padding: 0.3in 0.4in; max-width: 100%; }
+    header.cv-header { padding-bottom: 8px; margin-bottom: 12px; }
+    .contact-line { margin-top: 6px; }
+    section.cv-section { margin-bottom: 10px; }
+    section.cv-section h2 { margin-bottom: 5px; padding-bottom: 3px; }
+    .entry { margin-bottom: 7px; }
+    .entry .org { margin-bottom: 3px; }
+    .skills-list { gap: 5px; }
+    .summary p, .entry ul, .skill-line { line-height: 1.45; }
+    @page { size: A4; margin: 0; }
   }
 </style>
 </head>
@@ -167,7 +173,7 @@
 <div class="page">
   <header class="cv-header">
     <h1>Ahmed Helal</h1>
-    <div class="role">Computer Science Student | Aspiring SOC Analyst</div>
+    <div class="role">Computer Science Student — seeking SOC / cybersecurity internship</div>
     <div class="contact-line">
       <span>Jeddah, Saudi Arabia</span>
       <span class="sep">|</span>
@@ -181,7 +187,48 @@
 
   <section class="cv-section summary">
     <h2>Summary</h2>
-    <p>Computer Science student at the University of Jeddah, pursuing a career as a Security Operations Center (SOC) Analyst. Building practical knowledge of network monitoring, SIEM concepts, and incident response through coursework and self-directed study, with a strong personal interest in applying machine learning to threat detection. Reliable and detail-oriented, with part-time work experience in a data-accuracy role. Seeking an entry-level SOC or cybersecurity internship.</p>
+    <p>Computer science student at the University of Jeddah (graduating June 2027) working toward a SOC analyst role, with hands-on experience from self-built projects in SIEM monitoring, network traffic analysis, and log anomaly detection. Currently studying for CompTIA Security+. Seeking an entry-level SOC or cybersecurity internship.</p>
+  </section>
+
+  <section class="cv-section">
+    <h2>Projects</h2>
+    <div class="entry">
+      <div class="entry-top">
+        <span class="title">SIEM Home Lab — Wazuh</span>
+      </div>
+      <div class="org"><a href="https://github.com/CS-Abuhelal/siem-homelab" target="_blank" rel="noopener">github.com/CS-Abuhelal/siem-homelab</a></div>
+      <ul>
+        <li>Deployed Wazuh 4.14 on VirtualBox and enrolled a Windows 11 endpoint as a monitored agent.</li>
+        <li>Investigated a critical Node.js vulnerability (CVE-2025-55130, CVSS 9.1), traced 489 defense-evasion events to MITRE ATT&amp;CK T1562.001, and reviewed 351 failed CIS benchmark checks; documented findings in a SOC-style analyst report.</li>
+      </ul>
+    </div>
+    <div class="entry">
+      <div class="entry-top">
+        <span class="title">Network Traffic Analyzer — Python, Scapy</span>
+      </div>
+      <div class="org"><a href="https://github.com/CS-Abuhelal/network-traffic-analyzer" target="_blank" rel="noopener">github.com/CS-Abuhelal/network-traffic-analyzer</a></div>
+      <ul>
+        <li>Parses PCAP files and flags port scans, legacy protocols, traffic to known-malicious IP ranges, and cleartext credentials in HTTP/FTP; outputs a severity-ranked report.</li>
+      </ul>
+    </div>
+    <div class="entry">
+      <div class="entry-top">
+        <span class="title">Log Anomaly Detector — Python, pandas</span>
+      </div>
+      <div class="org"><a href="https://github.com/CS-Abuhelal/log-anomaly-detector" target="_blank" rel="noopener">github.com/CS-Abuhelal/log-anomaly-detector</a></div>
+      <ul>
+        <li>Normalizes Windows Security events and Linux auth.log into one timeline, then uses sliding windows and z-scores to flag brute-force bursts, unusual-hour logins, new accounts, and privilege escalation, each scored 0–100 for risk.</li>
+      </ul>
+    </div>
+    <div class="entry">
+      <div class="entry-top">
+        <span class="title">Phishing Email Analyzer — Python</span>
+      </div>
+      <div class="org"><a href="https://github.com/CS-Abuhelal/phishing-analyzer" target="_blank" rel="noopener">github.com/CS-Abuhelal/phishing-analyzer</a></div>
+      <ul>
+        <li>Parses raw email headers and body, checks for spoofed sender domains, disguised links, urgency language, and Reply-To mismatches; outputs a 0–100 risk score with a summary report.</li>
+      </ul>
+    </div>
   </section>
 
   <section class="cv-section">
@@ -192,13 +239,9 @@
         <span class="date">Expected June 2027</span>
       </div>
       <div class="org">University of Jeddah — Jeddah, Saudi Arabia</div>
-    </div>
-  </section>
-
-  <section class="cv-section">
-    <h2>Relevant Coursework</h2>
-    <div class="skills-list">
-      <div class="skill-line"><span class="items">Cybersecurity Fundamentals, Advanced Networking, Cloud Computing, AI Fundamentals, Data Warehousing, Data Structures, Algorithms Design & Analysis, Operating Systems, Computer Architecture</span></div>
+      <ul>
+        <li>Relevant coursework: Cybersecurity Fundamentals, Advanced Networking, Cloud Computing, AI Fundamentals, Operating Systems.</li>
+      </ul>
     </div>
   </section>
 
@@ -211,34 +254,26 @@
       </div>
       <div class="org">Bedour Ali Mohammed Al-Amoudi Est. — Jeddah, Saudi Arabia</div>
       <ul>
-        <li>Entered and maintained large volumes of data accurately under time constraints.</li>
-        <li>Reviewed records to identify and correct discrepancies, supporting data integrity.</li>
-        <li>Followed structured processes carefully — a habit directly transferable to log review and alert triage.</li>
+        <li>Enter and maintain large volumes of records accurately under time constraints.</li>
+        <li>Review records to find and correct discrepancies before they reach downstream reports.</li>
       </ul>
-    </div>
-  </section>
-
-  <section class="cv-section">
-    <h2>Certifications</h2>
-    <div class="skills-list">
-      <div class="skill-line"><span class="items">CompTIA Security+ — In Progress (self-study)</span></div>
     </div>
   </section>
 
   <section class="cv-section">
     <h2>Technical Skills</h2>
     <div class="skills-list">
-      <div class="skill-line"><strong>Cybersecurity:</strong> <span class="items">SIEM concepts, incident response basics, threat hunting fundamentals, MITRE ATT&CK framework (covered in Cybersecurity Fundamentals coursework)</span></div>
-      <div class="skill-line"><strong>Networking:</strong> <span class="items">TCP/IP, firewalls, Wireshark, DNS/DHCP, IDS/IPS basics (Advanced Networking coursework)</span></div>
-      <div class="skill-line"><strong>AI / Machine Learning:</strong> <span class="items">Python, fundamental ML and NLP concepts, data preprocessing (AI Fundamentals coursework)</span></div>
-      <div class="skill-line"><strong>Programming:</strong> <span class="items">Python, C/C++, SQL, Bash/PowerShell, Git</span></div>
+      <div class="skill-line"><strong>Security:</strong> <span class="items">Wazuh SIEM, MITRE ATT&amp;CK, log analysis, incident response basics, CIS benchmarks</span></div>
+      <div class="skill-line"><strong>Networking:</strong> <span class="items">TCP/IP, Wireshark, DNS/DHCP, firewalls, IDS/IPS</span></div>
+      <div class="skill-line"><strong>Programming:</strong> <span class="items">Python (Scapy, pandas, numpy), C/C++, SQL, Bash, PowerShell, Git</span></div>
+      <div class="skill-line"><strong>Machine learning:</strong> <span class="items">fundamentals — data preprocessing, classification, basic NLP</span></div>
     </div>
   </section>
 
   <section class="cv-section">
-    <h2>Personal Skills</h2>
+    <h2>Certifications</h2>
     <div class="skills-list">
-      <div class="skill-line"><span class="items">Attention to detail, analytical thinking, problem-solving, time management, adaptability, clear communication, reliability under pressure, fast learner</span></div>
+      <div class="skill-line"><span class="items">CompTIA Security+ — in progress</span></div>
     </div>
   </section>
 
