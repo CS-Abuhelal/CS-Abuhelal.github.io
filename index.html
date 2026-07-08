@@ -3,8 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ahmed Helal</title>
+<title>Ahmed Helal — Aspiring SOC Analyst</title>
 <meta name="description" content="Ahmed Helal — computer science student at the University of Jeddah, working toward a career in security operations. Projects in SIEM, network analysis, and log detection.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ahmed Helal — Aspiring SOC Analyst">
+<meta property="og:description" content="CS student at the University of Jeddah. Wazuh SIEM home lab, network traffic analysis, phishing detection, and log anomaly hunting — see the projects.">
+<meta property="og:url" content="https://cs-abuhelal.github.io/">
+<meta property="og:image" content="https://cs-abuhelal.github.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ahmed Helal — Aspiring SOC Analyst">
+<meta name="twitter:description" content="CS student at the University of Jeddah. Wazuh SIEM home lab, network traffic analysis, phishing detection, and log anomaly hunting.">
+<meta name="twitter:image" content="https://cs-abuhelal.github.io/og-image.png">
 <script>
   (function () {
     var saved = localStorage.getItem('theme');
@@ -382,6 +394,29 @@
 
   .project-card:hover { transform: translateY(-4px); }
 
+  .project-thumb {
+    display: block;
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 18px;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+  }
+
+  :root[data-theme="dark"] .project-thumb { border-color: rgba(255, 255, 255, 0.08); }
+
+  .btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--blue-dark);
+    border: 2px solid var(--blue);
+    box-shadow: none;
+  }
+
+  .btn-outline:hover { background: rgba(59, 130, 246, 0.12); color: var(--blue-dark); }
+
+  :root[data-theme="dark"] .btn-outline { color: var(--blue); }
+
   .project-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; }
 
   .project-card p { color: var(--muted); font-size: 0.88rem; flex: 1; }
@@ -656,24 +691,31 @@
     <h3 class="sub-heading">What I Built</h3>
     <div class="projects-grid">
       <div class="project-card">
+        <img class="project-thumb" src="img/siem-thumb.png" alt="Wazuh dashboard overview for the monitored Windows 11 endpoint" loading="lazy">
         <h3>SIEM Home Lab — Wazuh</h3>
         <p>A small SOC environment: Wazuh on VirtualBox with a Windows 11 endpoint enrolled as a monitored agent. Investigated a critical Node.js CVE (CVE-2025-55130, CVSS 9.1), traced 489 defense-evasion events to MITRE ATT&amp;CK T1562.001, and reviewed 351 failed CIS benchmark checks — all documented in a SOC-style report.</p>
         <div class="project-tags"><span>Wazuh</span><span>VirtualBox</span><span>Windows 11</span></div>
-        <a class="btn" href="https://github.com/CS-Abuhelal/siem-homelab" target="_blank" rel="noopener">View on GitHub →</a>
+        <div class="btn-row">
+          <a class="btn" href="https://github.com/CS-Abuhelal/siem-homelab/blob/master/writeup.md" target="_blank" rel="noopener">Read the report →</a>
+          <a class="btn btn-outline" href="https://github.com/CS-Abuhelal/siem-homelab" target="_blank" rel="noopener">View on GitHub</a>
+        </div>
       </div>
       <div class="project-card">
+        <img class="project-thumb" src="img/net-thumb.png" alt="Terminal output of the network traffic analyzer summary report" loading="lazy">
         <h3>Network Traffic Analyzer</h3>
         <p>Command-line tool that reads PCAP files with Scapy and flags things worth a second look: port scans, legacy protocols, traffic to known-bad IP ranges, and credentials sent in cleartext over HTTP or FTP. Outputs a severity-ranked report with synthetic sample captures for testing.</p>
         <div class="project-tags"><span>Python</span><span>Scapy</span></div>
         <a class="btn" href="https://github.com/CS-Abuhelal/network-traffic-analyzer" target="_blank" rel="noopener">View on GitHub →</a>
       </div>
       <div class="project-card">
+        <img class="project-thumb" src="img/phish-thumb.png" alt="Terminal output of the phishing email analyzer scoring a sample phishing email 100 out of 100" loading="lazy">
         <h3>Phishing Email Analyzer</h3>
         <p>Parses raw emails — headers and body — and scores them 0–100 for phishing risk based on spoofed sender domains, disguised links, urgency wording, and Reply-To mismatches, with a short readable summary of what it found.</p>
         <div class="project-tags"><span>Python</span><span>Email Security</span></div>
         <a class="btn" href="https://github.com/CS-Abuhelal/phishing-analyzer" target="_blank" rel="noopener">View on GitHub →</a>
       </div>
       <div class="project-card">
+        <img class="project-thumb" src="img/log-thumb.png" alt="Terminal output of the log anomaly detector summary report" loading="lazy">
         <h3>Log Anomaly Detector</h3>
         <p>Normalizes Windows Security events and Linux auth.log entries into a single timeline, then uses sliding windows and z-scores to surface brute-force bursts, unusual-hour logins, new account creation, and privilege escalation. Each finding gets a 0–100 risk score.</p>
         <div class="project-tags"><span>Python</span><span>pandas</span><span>numpy</span></div>
