@@ -12,307 +12,743 @@
     document.documentElement.dataset.theme = dark ? 'dark' : 'light';
   })();
 </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Caveat:wght@600&display=swap" rel="stylesheet">
 <style>
   :root {
     color-scheme: light;
-    --bg: #faf7f2;
-    --text: #26241f;
-    --muted: #6d665a;
-    --accent: #0e6e66;
-    --accent-soft: rgba(14, 110, 102, 0.08);
-    --rule: #e4ddd2;
+    --bg: #ffffff;
+    --band: #f1f5f9;
+    --card: #ffffff;
+    --chip: #f1f5f9;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --blue: #3b82f6;
+    --blue-dark: #2563eb;
+    --sky-1: #2fb9ec;
+    --sky-2: #56c8f2;
+    --cloud-1: #6fd1f5;
+    --cloud-2: #9fe2f9;
+    --hero-text: #111827;
+    --nav-bg: rgba(255, 255, 255, 0.92);
+    --input-bg: #334155;
+    --input-text: #e5e7eb;
+    --shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
     --error: #b42318;
-    --btn-text: #fff;
-    --input-bg: #fff;
+    --ok: #15803d;
   }
 
   :root[data-theme="dark"] {
     color-scheme: dark;
-    --bg: #16181c;
-    --text: #e2ddd4;
-    --muted: #9a948a;
-    --accent: #5fc6bc;
-    --accent-soft: rgba(95, 198, 188, 0.1);
-    --rule: #2d3138;
+    --bg: #0f172a;
+    --band: #16213a;
+    --card: #1b2740;
+    --chip: #1e293b;
+    --text: #e5e7eb;
+    --muted: #94a3b8;
+    --blue: #60a5fa;
+    --blue-dark: #3b82f6;
+    --sky-1: #0b1a33;
+    --sky-2: #10233f;
+    --cloud-1: #14294a;
+    --cloud-2: #1a3156;
+    --hero-text: #f1f5f9;
+    --nav-bg: rgba(15, 23, 42, 0.92);
+    --input-bg: #0f172a;
+    --input-text: #e5e7eb;
+    --shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+    --ok: #4ade80;
     --error: #ff8577;
-    --btn-text: #10201d;
-    --input-bg: #1d2026;
   }
 
-  * { box-sizing: border-box; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  ::selection { background: rgba(14, 110, 102, 0.22); }
+  html { scroll-behavior: smooth; }
 
   body {
-    margin: 0 auto;
-    max-width: 42rem;
-    padding: 2.75rem 1.375rem 4rem;
     background: var(--bg);
     color: var(--text);
-    font-family: Charter, 'Bitstream Charter', 'Sitka Text', Cambria, Georgia, serif;
-    font-size: 1.0625rem;
-    line-height: 1.68;
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    line-height: 1.7;
   }
 
-  a {
-    color: var(--accent);
-    text-underline-offset: 3px;
-    text-decoration-thickness: 1px;
-  }
+  a { color: var(--blue); text-decoration: none; }
 
-  a:hover { background: var(--accent-soft); }
+  .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
 
-  :focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
+  /* ===== Nav ===== */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--nav-bg);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 1px 6px rgba(15, 23, 42, 0.08);
   }
 
   nav {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 10px 24px;
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    align-items: baseline;
-    flex-wrap: wrap;
-    gap: 0.5rem 1rem;
-    margin-bottom: 3.25rem;
   }
 
-  nav .name {
-    font-weight: 700;
+  .logo {
+    font-family: 'Caveat', cursive;
+    font-size: 1.5rem;
+    font-weight: 600;
     color: var(--text);
-    text-decoration: none;
-    font-size: 1.1rem;
   }
 
-  nav .name:hover { background: none; color: var(--accent); }
+  .nav-right { display: flex; align-items: center; gap: 4px; }
 
-  nav .links {
+  .nav-links {
     display: flex;
-    align-items: baseline;
-    gap: 1.4rem;
-    font-size: 0.95rem;
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    list-style: none;
+    gap: 4px;
+    align-items: center;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 6px 14px;
+    font-size: 0.86rem;
+    font-weight: 500;
+    color: var(--text);
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--blue-dark); }
+
+  .nav-links a.active {
+    background: var(--blue);
+    color: #fff;
   }
 
   #themeToggle {
     background: none;
     border: none;
-    padding: 0 0.2rem;
-    font-size: 1rem;
-    line-height: 1;
-    color: var(--muted);
     cursor: pointer;
-  }
-
-  #themeToggle:hover { color: var(--accent); }
-
-  h1 {
-    font-size: 2.15rem;
-    line-height: 1.25;
-    margin: 0 0 0.75rem;
-  }
-
-  .lede {
-    font-size: 1.2rem;
-    color: var(--muted);
-    margin: 0 0 1.5rem;
-  }
-
-  h2 {
-    font-size: 1.35rem;
-    margin: 3.25rem 0 1.1rem;
-  }
-
-  h2::after {
-    content: "";
-    display: block;
-    width: 2.5rem;
-    height: 3px;
-    background: var(--accent);
-    border-radius: 2px;
-    margin-top: 0.45rem;
-  }
-
-  h3 {
-    font-size: 1.1rem;
-    margin: 1.9rem 0 0.35rem;
-  }
-
-  h3 a {
+    padding: 6px;
+    margin-inline-start: 8px;
     color: var(--text);
-    text-decoration-color: var(--rule);
-    text-decoration-thickness: 2px;
+    display: flex;
+    align-items: center;
   }
 
-  h3 a:hover {
+  #themeToggle:hover { color: var(--blue-dark); }
+
+  .nav-burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
     background: none;
-    text-decoration-color: var(--accent);
+    border: none;
+    cursor: pointer;
+    padding: 6px;
   }
 
-  p { margin: 0 0 1rem; }
+  .nav-burger span { width: 22px; height: 2px; background: var(--text); border-radius: 2px; }
 
-  .tech {
-    font-family: ui-monospace, 'Cascadia Code', Consolas, monospace;
+  /* ===== Hero ===== */
+  .hero {
+    position: relative;
+    min-height: calc(100vh - 54px);
+    background: linear-gradient(180deg, var(--sky-1), var(--sky-2));
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 60px 24px 140px;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 40px;
+    align-items: center;
+    width: 100%;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    font-weight: 800;
+    color: var(--hero-text);
+    line-height: 1.15;
+  }
+
+  .hero .typed-line {
+    font-size: clamp(1.6rem, 3.6vw, 2.6rem);
+    font-weight: 800;
+    color: var(--blue-dark);
+    min-height: 1.4em;
+  }
+
+  :root[data-theme="dark"] .hero .typed-line { color: var(--blue); }
+
+  .typed-cursor {
+    display: inline-block;
+    width: 3px;
+    height: 1em;
+    background: currentColor;
+    vertical-align: -0.1em;
+    margin-left: 3px;
+    animation: blink 0.9s steps(2) infinite;
+  }
+
+  @keyframes blink { 50% { opacity: 0; } }
+
+  .hero p.sub {
+    margin-top: 16px;
+    max-width: 460px;
+    color: var(--hero-text);
+    opacity: 0.85;
+    font-size: 0.98rem;
+  }
+
+  .social-row { display: flex; gap: 14px; margin: 22px 0 28px; }
+
+  .social-row a {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.85);
+    color: #1f2937;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow);
+    transition: transform 0.15s;
+  }
+
+  :root[data-theme="dark"] .social-row a { background: #1e293b; color: #e5e7eb; }
+
+  .social-row a:hover { transform: translateY(-3px); color: var(--blue-dark); }
+
+  .social-row svg { width: 20px; height: 20px; fill: currentColor; }
+
+  .btn {
+    display: inline-block;
+    background: var(--blue);
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 12px 34px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35);
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn:hover { background: var(--blue-dark); transform: translateY(-2px); }
+
+  .hero-art { display: flex; justify-content: center; }
+  .hero-art svg { width: 100%; max-width: 460px; height: auto; }
+
+  .clouds {
+    position: absolute;
+    left: 0; right: 0; bottom: -2px;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .clouds svg { display: block; width: 100%; height: 90px; }
+  .clouds .c1 { fill: var(--cloud-1); }
+  .clouds .c2 { fill: var(--cloud-2); margin-top: -60px; }
+  .clouds .c3 { fill: var(--bg); margin-top: -55px; }
+
+  /* ===== Sections ===== */
+  section { padding: 90px 0 70px; scroll-margin-top: 60px; }
+
+  section.band { background: var(--band); }
+
+  .section-title {
+    text-align: center;
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    font-weight: 800;
+    margin-bottom: 36px;
+  }
+
+  .sub-heading {
+    color: var(--blue-dark);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+
+  :root[data-theme="dark"] .sub-heading { color: var(--blue); }
+
+  .about-text {
     color: var(--muted);
+    max-width: 900px;
+    margin-bottom: 40px;
+    text-align: justify;
+  }
+
+  .about-text strong { color: var(--text); }
+
+  /* Tech chips */
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 14px;
+    max-width: 1000px;
+    margin: 30px auto 0;
+  }
+
+  .tech-chip {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--chip);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 0.88rem;
+    font-weight: 500;
+  }
+
+  .tech-chip .ic {
+    width: 30px; height: 30px;
+    flex-shrink: 0;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
     font-size: 0.78rem;
-    margin-top: -0.5rem;
-    letter-spacing: 0.2px;
+    font-weight: 700;
   }
 
-  ul.skills {
-    padding-left: 1.25rem;
-    margin: 0;
+  /* What I do cards */
+  .cards-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    max-width: 1000px;
+    margin: 0 auto;
   }
 
-  ul.skills li { margin-bottom: 0.5rem; }
-  ul.skills li::marker { color: var(--accent); }
+  .info-card {
+    background: var(--card);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    padding: 30px 24px;
+    text-align: center;
+  }
 
-  form { margin-top: 1.5rem; }
+  .info-card .glyph {
+    width: 54px; height: 54px;
+    margin: 0 auto 16px;
+    border-radius: 12px;
+    background: rgba(59, 130, 246, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-  .field { margin-bottom: 1rem; }
+  .info-card .glyph svg { width: 28px; height: 28px; stroke: var(--blue-dark); }
+  :root[data-theme="dark"] .info-card .glyph svg { stroke: var(--blue); }
+
+  .info-card h3 { font-size: 1.02rem; font-weight: 700; margin-bottom: 10px; }
+
+  .info-card p { color: var(--muted); font-size: 0.88rem; text-align: justify; }
+
+  /* Projects */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 26px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .project-card {
+    background: var(--card);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    padding: 26px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s;
+  }
+
+  .project-card:hover { transform: translateY(-4px); }
+
+  .project-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; }
+
+  .project-card p { color: var(--muted); font-size: 0.88rem; flex: 1; }
+
+  .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0 18px; }
+
+  .project-tags span {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--blue-dark);
+    background: rgba(59, 130, 246, 0.12);
+    padding: 3px 10px;
+    border-radius: 999px;
+  }
+
+  :root[data-theme="dark"] .project-tags span { color: var(--blue); }
+
+  .project-card .btn { align-self: flex-start; padding: 9px 20px; font-size: 0.85rem; }
+
+  /* Contact */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 60px;
+    max-width: 1000px;
+    margin: 0 auto;
+    align-items: start;
+  }
+
+  .contact-grid .lead { color: var(--muted); font-size: 0.94rem; margin-bottom: 24px; }
+
+  .field { margin-bottom: 16px; }
 
   .field label {
     display: block;
-    font-size: 0.85rem;
-    margin-bottom: 0.3rem;
-    color: var(--muted);
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 0.88rem;
+    font-weight: 500;
+    margin-bottom: 6px;
   }
 
   .field input,
   .field textarea {
     width: 100%;
-    padding: 0.55rem 0.7rem;
     background: var(--input-bg);
-    border: 1px solid var(--rule);
-    border-radius: 4px;
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    font-size: 0.95rem;
-    color: var(--text);
+    color: var(--input-text);
+    border: 1px solid transparent;
+    border-radius: 8px;
+    padding: 11px 14px;
+    font-family: inherit;
+    font-size: 0.9rem;
     resize: vertical;
   }
 
+  .field input::placeholder,
+  .field textarea::placeholder { color: #94a3b8; }
+
   .field input:focus,
-  .field textarea:focus {
-    outline: none;
-    border-color: var(--accent);
-  }
+  .field textarea:focus { outline: none; border-color: var(--blue); }
 
-  button[type="submit"] {
-    background: var(--accent);
-    color: var(--btn-text);
-    border: none;
-    border-radius: 4px;
-    padding: 0.6rem 1.5rem;
-    font-size: 0.95rem;
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    font-weight: 600;
-    cursor: pointer;
-  }
+  #formMsg { margin-top: 12px; font-size: 0.9rem; }
 
-  button[type="submit"]:hover { filter: brightness(1.1); }
-  button[type="submit"]:disabled { opacity: 0.6; cursor: default; }
+  .contact-side { text-align: end; }
 
-  #formMsg {
-    margin-top: 0.75rem;
-    font-size: 0.92rem;
-  }
+  .contact-side h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 6px; }
+
+  .contact-side .val { color: var(--blue-dark); font-size: 0.88rem; margin-bottom: 28px; display: block; }
+  :root[data-theme="dark"] .contact-side .val { color: var(--blue); }
+
+  .contact-side .social-row { justify-content: flex-end; margin: 10px 0 0; }
+  .contact-side .social-row a { background: var(--chip); color: var(--text); box-shadow: none; }
 
   footer {
-    margin-top: 4.5rem;
-    padding-top: 1.25rem;
-    border-top: 1px solid var(--rule);
-    color: var(--muted);
+    padding: 22px 0;
+    text-align: center;
     font-size: 0.88rem;
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color: var(--muted);
+    border-top: 1px solid var(--band);
+  }
+
+  footer .heart { color: #ef4444; }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; padding-bottom: 120px; text-align: center; }
+    .hero p.sub { margin-inline: auto; }
+    .social-row { justify-content: center; }
+    .hero-art { order: -1; }
+    .hero-art svg { max-width: 300px; }
+    .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    .contact-side { text-align: start; }
+    .contact-side .social-row { justify-content: flex-start; }
+  }
+
+  @media (max-width: 760px) {
+    .nav-links {
+      position: fixed;
+      top: 54px; left: 0; right: 0;
+      background: var(--nav-bg);
+      backdrop-filter: blur(8px);
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    .nav-links.open { max-height: 340px; box-shadow: 0 10px 20px rgba(15,23,42,0.15); }
+    .nav-links a { padding: 14px 24px; border-radius: 0; }
+    .nav-burger { display: flex; }
   }
 </style>
 </head>
 <body>
 
-<nav>
-  <a class="name" href="#">Ahmed Helal</a>
-  <span class="links">
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-    <a href="cv.html">CV</a>
-    <button id="themeToggle" type="button" aria-label="Switch theme">☾</button>
-  </span>
-</nav>
-
-<main>
-  <h1>Hi, I'm Ahmed.</h1>
-  <p class="lede">Computer science student at the University of Jeddah, working toward a career in security operations.</p>
-
-  <p>Most of my free time goes into defensive security: I run a small Wazuh home lab, and I build Python tools to practice log analysis and network monitoring. My coursework leans toward AI, and the overlap between the two fields is what interests me most — using machine learning to cut alert noise and speed up triage.</p>
-
-  <p>Right now I'm studying for CompTIA Security+ and looking for a SOC or security internship, in Jeddah or remote. You can read my <a href="cv.html">CV</a>, or find me on <a href="https://github.com/CS-Abuhelal" target="_blank" rel="noopener">GitHub</a> and <a href="https://linkedin.com/in/ahmed-helal-3b6b65406" target="_blank" rel="noopener">LinkedIn</a>.</p>
-
-  <h2 id="projects">Projects</h2>
-
-  <h3><a href="https://github.com/CS-Abuhelal/siem-homelab" target="_blank" rel="noopener">SIEM home lab</a></h3>
-  <p>A small SOC environment: Wazuh on VirtualBox, with a Windows 11 machine enrolled as a monitored agent. Using it I dug into a critical Node.js vulnerability (CVE-2025-55130), traced 489 defense-evasion events to MITRE ATT&amp;CK T1562.001, and worked through the endpoint's failed CIS benchmark checks. Findings are written up in a SOC-style report in the repo.</p>
-  <p class="tech">Wazuh · VirtualBox · Windows 11</p>
-
-  <h3><a href="https://github.com/CS-Abuhelal/network-traffic-analyzer" target="_blank" rel="noopener">Network traffic analyzer</a></h3>
-  <p>Command-line tool that reads PCAP files with Scapy and flags things worth a second look: port scans, legacy protocols, traffic to known-bad IP ranges, and credentials sent in cleartext over HTTP or FTP. Outputs a severity-ranked report, and ships with synthetic sample captures for testing.</p>
-  <p class="tech">Python · Scapy</p>
-
-  <h3><a href="https://github.com/CS-Abuhelal/phishing-analyzer" target="_blank" rel="noopener">Phishing email analyzer</a></h3>
-  <p>Parses raw emails — headers and body — and scores them 0–100 for phishing risk based on spoofed sender domains, disguised links, urgency wording, and Reply-To mismatches, with a short readable summary of what it found.</p>
-  <p class="tech">Python</p>
-
-  <h3><a href="https://github.com/CS-Abuhelal/log-anomaly-detector" target="_blank" rel="noopener">Log anomaly detector</a></h3>
-  <p>Normalizes Windows Security events and Linux auth.log entries into a single timeline, then uses sliding windows and z-scores to surface brute-force bursts, logins at unusual hours, new account creation, and privilege escalation. Each finding gets a 0–100 risk score.</p>
-  <p class="tech">Python · pandas · numpy</p>
-
-  <h2 id="skills">Skills</h2>
-
-  <ul class="skills">
-    <li><strong>Security:</strong> SIEM (Wazuh), MITRE ATT&amp;CK, incident response basics, log analysis</li>
-    <li><strong>Networking:</strong> TCP/IP, Wireshark, DNS/DHCP, firewalls, IDS/IPS</li>
-    <li><strong>Programming:</strong> Python, C/C++, SQL, Bash, PowerShell, Git</li>
-    <li><strong>Machine learning:</strong> fundamentals — data preprocessing, classification, basic NLP</li>
-  </ul>
-
-  <h2 id="contact">Contact</h2>
-
-  <p>Email is the fastest way to reach me: <a href="mailto:abuh3lal@gmail.com">abuh3lal@gmail.com</a>. Or use the form below — it goes straight to my inbox.</p>
-
-  <form id="contactForm" action="https://formspree.io/f/xkoaabkd" method="POST">
-    <input type="hidden" name="_subject" value="New message from portfolio site">
-    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-    <div class="field">
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name" required>
+<header>
+  <nav>
+    <span class="logo">&lt;ahmed helal/&gt;</span>
+    <div class="nav-right">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#focus">What I Do</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="cv.html">CV</a></li>
+      </ul>
+      <button id="themeToggle" aria-label="Switch theme">
+        <svg id="iconSun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg id="iconMoon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="display:none"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <button class="nav-burger" id="navBurger" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <div class="field">
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" required>
+  </nav>
+</header>
+
+<section id="home" class="hero">
+  <div class="hero-inner">
+    <div>
+      <h1>Hi, I am Ahmed</h1>
+      <div class="typed-line"><span id="typed"></span><span class="typed-cursor"></span></div>
+      <p class="sub">Computer science student at the University of Jeddah. I run a Wazuh SIEM home lab and build Python tools for traffic analysis, phishing detection, and log anomaly hunting.</p>
+      <div class="social-row">
+        <a href="https://github.com/CS-Abuhelal" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        </a>
+        <a href="https://linkedin.com/in/ahmed-helal-3b6b65406" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
+        </a>
+        <a href="mailto:abuh3lal@gmail.com" aria-label="Email">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </a>
+      </div>
+      <a class="btn" href="cv.html">View CV</a>
     </div>
-    <div class="field">
-      <label for="message">Message</label>
-      <textarea id="message" name="message" rows="5" required></textarea>
+
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 460 360" xmlns="http://www.w3.org/2000/svg">
+        <!-- floating bits -->
+        <g opacity="0.85">
+          <rect x="40" y="40" width="46" height="30" rx="6" fill="#ffffff" opacity="0.9"/>
+          <text x="63" y="61" font-family="Consolas, monospace" font-size="14" fill="#2563eb" text-anchor="middle">&lt;/&gt;</text>
+          <circle cx="400" cy="60" r="18" fill="#ffffff" opacity="0.9"/>
+          <path d="M400 52l7 3v5c0 4.5-3 8.5-7 9.5-4-1-7-5-7-9.5v-5z" fill="#2563eb"/>
+          <rect x="370" y="150" width="40" height="26" rx="5" fill="#ffffff" opacity="0.85"/>
+          <rect x="377" y="158" width="26" height="3" rx="1.5" fill="#93c5fd"/>
+          <rect x="377" y="164" width="18" height="3" rx="1.5" fill="#93c5fd"/>
+          <circle cx="60" cy="150" r="4" fill="#ffffff" opacity="0.8"/>
+          <circle cx="90" cy="110" r="3" fill="#ffffff" opacity="0.7"/>
+          <circle cx="345" cy="30" r="3" fill="#ffffff" opacity="0.7"/>
+        </g>
+        <!-- desk -->
+        <rect x="70" y="252" width="320" height="10" rx="5" fill="#1e3a5f"/>
+        <rect x="95" y="262" width="12" height="70" rx="4" fill="#1e3a5f"/>
+        <rect x="353" y="262" width="12" height="70" rx="4" fill="#1e3a5f"/>
+        <!-- monitor -->
+        <rect x="210" y="130" width="150" height="100" rx="8" fill="#0f172a"/>
+        <rect x="218" y="138" width="134" height="84" rx="4" fill="#111c33"/>
+        <rect x="226" y="148" width="70" height="5" rx="2.5" fill="#4ade80"/>
+        <rect x="226" y="160" width="100" height="5" rx="2.5" fill="#334155"/>
+        <rect x="226" y="172" width="86" height="5" rx="2.5" fill="#334155"/>
+        <rect x="226" y="184" width="60" height="5" rx="2.5" fill="#f59e0b"/>
+        <rect x="226" y="196" width="94" height="5" rx="2.5" fill="#334155"/>
+        <circle cx="336" cy="156" r="10" fill="#12233f"/>
+        <path d="M336 149l6 2.5v4c0 3.8-2.5 7-6 8-3.5-1-6-4.2-6-8v-4z" fill="#3b82f6"/>
+        <rect x="277" y="230" width="16" height="22" fill="#1e3a5f"/>
+        <rect x="257" y="248" width="56" height="6" rx="3" fill="#1e3a5f"/>
+        <!-- person -->
+        <circle cx="160" cy="170" r="22" fill="#f0c8a0"/>
+        <path d="M138 166c0-14 10-24 22-24s22 10 22 24l-6-2c-3-8-8-10-16-10s-13 2-16 10z" fill="#1f2937"/>
+        <rect x="136" y="192" width="48" height="52" rx="16" fill="#2563eb"/>
+        <rect x="172" y="200" width="42" height="14" rx="7" fill="#2563eb" transform="rotate(18 172 200)"/>
+        <circle cx="212" cy="216" r="7" fill="#f0c8a0"/>
+        <!-- chair -->
+        <rect x="128" y="244" width="64" height="10" rx="5" fill="#0f2744"/>
+        <rect x="154" y="254" width="12" height="52" rx="4" fill="#0f2744"/>
+        <rect x="132" y="304" width="56" height="8" rx="4" fill="#0f2744"/>
+        <rect x="120" y="186" width="12" height="66" rx="6" fill="#0f2744"/>
+        <!-- plant -->
+        <rect x="404" y="222" width="22" height="30" rx="4" fill="#c2703d"/>
+        <path d="M415 222c-2-16 -12-20-16-22 6-1 12 2 14 8 1-10 6-14 10-15-2 5-2 10-1 14 4-5 9-6 13-5-5 3-8 7-9 12z" fill="#22c55e"/>
+      </svg>
     </div>
-    <button type="submit">Send</button>
-    <div id="formMsg"></div>
-  </form>
-</main>
+  </div>
+
+  <div class="clouds">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path class="c1" d="M0,80 C120,20 240,20 360,70 C480,120 600,110 720,60 C840,10 960,20 1080,70 C1200,115 1320,105 1440,55 L1440,120 L0,120 Z"/></svg>
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none" style="margin-top:-58px"><path class="c2" d="M0,90 C150,30 300,35 450,80 C600,120 750,115 900,70 C1050,25 1200,35 1440,85 L1440,120 L0,120 Z"/></svg>
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none" style="margin-top:-52px"><path class="c3" d="M0,100 C180,45 360,50 540,90 C720,125 900,120 1080,80 C1260,42 1380,55 1440,95 L1440,120 L0,120 Z"/></svg>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <h2 class="section-title">About Me</h2>
+
+    <h3 class="sub-heading">A bit about me</h3>
+    <p class="about-text">I'm a computer science student at the <strong>University of Jeddah</strong>, working toward a career as a <strong>SOC analyst</strong>. Most of my free time goes into defensive security: I run a small Wazuh SIEM home lab with a monitored Windows 11 endpoint, and I build Python tools to practice log analysis and network monitoring. My coursework leans toward AI, and the overlap between the two fields is what interests me most — using machine learning to cut alert noise and speed up triage. Right now I'm studying for <strong>CompTIA Security+</strong> and looking for a SOC or security internship, in Jeddah or remote.</p>
+
+    <h3 class="sub-heading">Technologies and Tools</h3>
+    <p class="about-text">The stack I practice with — from SIEM and packet analysis down to the scripting that glues it together.</p>
+
+    <div class="tech-grid">
+      <div class="tech-chip"><span class="ic" style="background:#326ce5">W</span>Wazuh SIEM</div>
+      <div class="tech-chip"><span class="ic" style="background:#1679a7">Ws</span>Wireshark</div>
+      <div class="tech-chip"><span class="ic" style="background:#e11d48">M</span>MITRE ATT&amp;CK</div>
+      <div class="tech-chip"><span class="ic" style="background:#3776ab">Py</span>Python</div>
+      <div class="tech-chip"><span class="ic" style="background:#0ea5e9">Sc</span>Scapy</div>
+      <div class="tech-chip"><span class="ic" style="background:#150458">pd</span>pandas</div>
+      <div class="tech-chip"><span class="ic" style="background:#00599c">C+</span>C / C++</div>
+      <div class="tech-chip"><span class="ic" style="background:#e38c00">SQ</span>SQL</div>
+      <div class="tech-chip"><span class="ic" style="background:#4eaa25">Sh</span>Bash</div>
+      <div class="tech-chip"><span class="ic" style="background:#012456">PS</span>PowerShell</div>
+      <div class="tech-chip"><span class="ic" style="background:#f05032">Gi</span>Git</div>
+      <div class="tech-chip"><span class="ic" style="background:#fcc624;color:#111">Lx</span>Linux</div>
+      <div class="tech-chip"><span class="ic" style="background:#183153">VB</span>VirtualBox</div>
+      <div class="tech-chip"><span class="ic" style="background:#7c3aed">ML</span>ML fundamentals</div>
+    </div>
+  </div>
+</section>
+
+<section id="focus" class="band">
+  <div class="container">
+    <h2 class="section-title">What I Do</h2>
+    <h3 class="sub-heading">Where I focus</h3>
+    <div class="cards-3">
+      <div class="info-card">
+        <div class="glyph">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 3.5v5c0 5.5-3.5 9.8-8 11.5-4.5-1.7-8-6-8-11.5v-5z"/><path d="M9 12l2 2 4-4"/></svg>
+        </div>
+        <h3>Security Monitoring &amp; SIEM</h3>
+        <p>Running Wazuh end to end: agent enrollment, vulnerability detection, MITRE ATT&amp;CK mapping, and CIS benchmark assessment — then writing up findings the way a SOC analyst would.</p>
+      </div>
+      <div class="info-card">
+        <div class="glyph">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-7 4 14 2-7h6"/></svg>
+        </div>
+        <h3>Network &amp; Log Analysis</h3>
+        <p>Digging through PCAPs and event logs for the stories they tell: port scans, cleartext credentials, brute-force bursts, odd-hour logins, and privilege escalation.</p>
+      </div>
+      <div class="info-card">
+        <div class="glyph">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 9h.01M15 9h.01M9 15h6"/></svg>
+        </div>
+        <h3>Applied AI for Security</h3>
+        <p>My degree work leans toward AI, and I'm most interested in the overlap: statistical anomaly detection and machine learning that cut alert noise instead of adding to it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <h2 class="section-title">Projects</h2>
+    <h3 class="sub-heading">What I Built</h3>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>SIEM Home Lab — Wazuh</h3>
+        <p>A small SOC environment: Wazuh on VirtualBox with a Windows 11 endpoint enrolled as a monitored agent. Investigated a critical Node.js CVE (CVE-2025-55130, CVSS 9.1), traced 489 defense-evasion events to MITRE ATT&amp;CK T1562.001, and reviewed 351 failed CIS benchmark checks — all documented in a SOC-style report.</p>
+        <div class="project-tags"><span>Wazuh</span><span>VirtualBox</span><span>Windows 11</span></div>
+        <a class="btn" href="https://github.com/CS-Abuhelal/siem-homelab" target="_blank" rel="noopener">View on GitHub →</a>
+      </div>
+      <div class="project-card">
+        <h3>Network Traffic Analyzer</h3>
+        <p>Command-line tool that reads PCAP files with Scapy and flags things worth a second look: port scans, legacy protocols, traffic to known-bad IP ranges, and credentials sent in cleartext over HTTP or FTP. Outputs a severity-ranked report with synthetic sample captures for testing.</p>
+        <div class="project-tags"><span>Python</span><span>Scapy</span></div>
+        <a class="btn" href="https://github.com/CS-Abuhelal/network-traffic-analyzer" target="_blank" rel="noopener">View on GitHub →</a>
+      </div>
+      <div class="project-card">
+        <h3>Phishing Email Analyzer</h3>
+        <p>Parses raw emails — headers and body — and scores them 0–100 for phishing risk based on spoofed sender domains, disguised links, urgency wording, and Reply-To mismatches, with a short readable summary of what it found.</p>
+        <div class="project-tags"><span>Python</span><span>Email Security</span></div>
+        <a class="btn" href="https://github.com/CS-Abuhelal/phishing-analyzer" target="_blank" rel="noopener">View on GitHub →</a>
+      </div>
+      <div class="project-card">
+        <h3>Log Anomaly Detector</h3>
+        <p>Normalizes Windows Security events and Linux auth.log entries into a single timeline, then uses sliding windows and z-scores to surface brute-force bursts, unusual-hour logins, new account creation, and privilege escalation. Each finding gets a 0–100 risk score.</p>
+        <div class="project-tags"><span>Python</span><span>pandas</span><span>numpy</span></div>
+        <a class="btn" href="https://github.com/CS-Abuhelal/log-anomaly-detector" target="_blank" rel="noopener">View on GitHub →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="band">
+  <div class="container">
+    <h2 class="section-title">Contact</h2>
+    <div class="contact-grid">
+      <div>
+        <h3 class="sub-heading">Connect with me</h3>
+        <p class="lead">If you want to know more about me or my work, or if you would just like to say hello, send me a message. I'd love to hear from you.</p>
+        <form id="contactForm" action="https://formspree.io/f/xkoaabkd" method="POST">
+          <input type="hidden" name="_subject" value="New message from portfolio site">
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+          <div class="field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Enter your message" required></textarea>
+          </div>
+          <button type="submit" class="btn">Submit</button>
+          <div id="formMsg"></div>
+        </form>
+      </div>
+      <div class="contact-side">
+        <h3>Email</h3>
+        <a class="val" href="mailto:abuh3lal@gmail.com">ABUH3LAL@GMAIL.COM</a>
+        <h3>Location</h3>
+        <span class="val">JEDDAH, SAUDI ARABIA</span>
+        <h3>Social</h3>
+        <div class="social-row">
+          <a href="https://github.com/CS-Abuhelal" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          </a>
+          <a href="https://linkedin.com/in/ahmed-helal-3b6b65406" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
+          </a>
+          <a href="mailto:abuh3lal@gmail.com" aria-label="Email">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <footer>
-  &copy; <span id="year"></span> Ahmed Helal · Jeddah, Saudi Arabia ·
-  <a href="https://github.com/CS-Abuhelal" target="_blank" rel="noopener">GitHub</a> ·
-  <a href="https://linkedin.com/in/ahmed-helal-3b6b65406" target="_blank" rel="noopener">LinkedIn</a><br>
-  Hand-coded — plain HTML and CSS, no framework.
+  Made with <span class="heart">❤</span> by Ahmed Helal
 </footer>
 
 <script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-
+  // Theme toggle
   const themeToggle = document.getElementById('themeToggle');
+  const iconSun = document.getElementById('iconSun');
+  const iconMoon = document.getElementById('iconMoon');
 
   function syncThemeToggle() {
     const dark = document.documentElement.dataset.theme === 'dark';
-    themeToggle.textContent = dark ? '☀' : '☾';
+    iconSun.style.display = dark ? 'block' : 'none';
+    iconMoon.style.display = dark ? 'none' : 'block';
     themeToggle.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
   }
 
@@ -325,6 +761,53 @@
 
   syncThemeToggle();
 
+  // Mobile nav
+  const navBurger = document.getElementById('navBurger');
+  const navLinks = document.getElementById('navLinks');
+  navBurger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a =>
+    a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // Typed text
+  const phrases = ['Aspiring SOC Analyst', 'CS Student @ UJ', 'Blue Team in Training'];
+  const typedEl = document.getElementById('typed');
+  let pi = 0, ci = 0, deleting = false;
+
+  function typeLoop() {
+    const current = phrases[pi];
+    ci += deleting ? -1 : 1;
+    typedEl.textContent = current.slice(0, ci);
+    if (!deleting && ci === current.length) {
+      deleting = true;
+      setTimeout(typeLoop, 1600);
+      return;
+    }
+    if (deleting && ci === 0) {
+      deleting = false;
+      pi = (pi + 1) % phrases.length;
+    }
+    setTimeout(typeLoop, deleting ? 40 : 80);
+  }
+  typeLoop();
+
+  // Scrollspy
+  const sections = document.querySelectorAll('section[id]');
+  const anchors = document.querySelectorAll('.nav-links a[href^="#"]');
+
+  function setActive() {
+    let current = 'home';
+    sections.forEach(sec => {
+      const rect = sec.getBoundingClientRect();
+      if (rect.top <= 120 && rect.bottom >= 120) current = sec.id;
+    });
+    anchors.forEach(a =>
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current));
+  }
+
+  window.addEventListener('scroll', setActive);
+  setActive();
+
+  // Contact form
   const contactForm = document.getElementById('contactForm');
   const formMsg = document.getElementById('formMsg');
   const submitBtn = contactForm.querySelector('button[type="submit"]');
@@ -343,7 +826,7 @@
 
       if (response.ok) {
         formMsg.textContent = 'Message sent — thanks, I\'ll reply soon.';
-        formMsg.style.color = 'var(--accent)';
+        formMsg.style.color = 'var(--ok)';
         contactForm.reset();
       } else {
         formMsg.textContent = 'Something went wrong. Please email me directly at abuh3lal@gmail.com.';
@@ -355,7 +838,7 @@
     }
 
     submitBtn.disabled = false;
-    submitBtn.textContent = 'Send';
+    submitBtn.textContent = 'Submit';
   });
 </script>
 
