@@ -147,30 +147,25 @@
     font-size: 0.88rem;
   }
 
-  .interests-row {
+  .page { position: relative; }
+
+  .corner-icons {
+    position: absolute;
+    bottom: 26px;
+    right: 56px;
     display: flex;
-    flex-wrap: wrap;
-    gap: 34px;
-    align-items: center;
-    font-size: 0.88rem;
+    gap: 18px;
+    color: #9aa1a9;
   }
 
-  .interests-row .int {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-  }
-
-  .interests-row svg {
-    display: block;
-    color: var(--text);
-  }
+  .corner-icons svg { display: block; }
 
   @media print {
     html { font-size: 14px; }
     body { background: #fff; padding: 0; }
     .toolbar { display: none; }
-    .page { box-shadow: none; border: none; padding: 0.3in 0.4in; max-width: 100%; }
+    .page { box-shadow: none; border: none; padding: 0.3in 0.4in; max-width: 100%; min-height: 297mm; }
+    .corner-icons { right: 0.4in; bottom: 0.3in; }
     header.cv-header { padding-bottom: 8px; margin-bottom: 12px; }
     .contact-line { margin-top: 6px; }
     section.cv-section { margin-bottom: 8px; }
@@ -305,23 +300,11 @@
     </div>
   </section>
 
-  <section class="cv-section">
-    <h2>Interests</h2>
-    <div class="interests-row">
-      <span class="int">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9.5"/><path d="M12 8l3.8 2.8-1.45 4.4h-4.7L8.2 10.8z" fill="currentColor" stroke="none"/></svg>
-        Football
-      </span>
-      <span class="int">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 20.5v-17"/><path d="M3.5 20.5h17"/><path d="M6.5 15.5l4-4 3 3 6-6.5"/><path d="M19.5 12V8h-4"/></svg>
-        The stock market
-      </span>
-      <span class="int">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="3.2" fill="currentColor" stroke="none"/><path d="M12 2.2v1.2M17 3.9l-.85.85M21.8 8h-1.2M2.2 8h1.2M7 3.9l.85.85"/><path d="M2.5 17.5c2-1.5 4.3-1.5 6.3 0s4.4 1.5 6.4 0 4.3-1.5 6.3 0"/><path d="M2.5 21c2-1.5 4.3-1.5 6.3 0s4.4 1.5 6.4 0 4.3-1.5 6.3 0"/></svg>
-        Beach days
-      </span>
-    </div>
-  </section>
+  <div class="corner-icons" aria-hidden="true">
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9.5"/><path d="M12 8l3.8 2.8-1.45 4.4h-4.7L8.2 10.8z" fill="currentColor" stroke="none"/></svg>
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 20.5v-17"/><path d="M3.5 20.5h17"/><path d="M6.5 15.5l4-4 3 3 6-6.5"/><path d="M19.5 12V8h-4"/></svg>
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="8" r="3.2" fill="currentColor" stroke="none"/><path d="M12 2.2v1.2M17 3.9l-.85.85M21.8 8h-1.2M2.2 8h1.2M7 3.9l.85.85"/><path d="M2.5 17.5c2-1.5 4.3-1.5 6.3 0s4.4 1.5 6.4 0 4.3-1.5 6.3 0"/><path d="M2.5 21c2-1.5 4.3-1.5 6.3 0s4.4 1.5 6.4 0 4.3-1.5 6.3 0"/></svg>
+  </div>
 
 </div>
 
